@@ -4,7 +4,7 @@
 
 // OpenZeppelin Contracts v4.4.1 (utils/Context.sol)
 
-pragma solidity ^0.8.0;
+pragma solidity 0.8.7;
 
 /**
  * @dev Provides information about the current execution context, including the
@@ -30,7 +30,6 @@ abstract contract Context {
 
 // OpenZeppelin Contracts (last updated v4.5.0) (token/ERC20/IERC20.sol)
 
-pragma solidity ^0.8.0;
 
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP.
@@ -115,7 +114,6 @@ interface IERC20 {
 
 // OpenZeppelin Contracts v4.4.1 (token/ERC20/extensions/IERC20Metadata.sol)
 
-pragma solidity ^0.8.0;
 
 
 /**
@@ -144,10 +142,6 @@ interface IERC20Metadata is IERC20 {
 
 
 // OpenZeppelin Contracts (last updated v4.5.0) (token/ERC20/ERC20.sol)
-
-pragma solidity ^0.8.0;
-
-
 
 
 /**
@@ -530,10 +524,6 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
 
 // OpenZeppelin Contracts (last updated v4.5.0) (token/ERC20/extensions/ERC20Burnable.sol)
 
-pragma solidity ^0.8.0;
-
-
-
 /**
  * @dev Extension of {ERC20} that allows token holders to destroy both their own
  * tokens and those that they have an allowance for, in a way that can be
@@ -569,12 +559,22 @@ abstract contract ERC20Burnable is Context, ERC20 {
 // File: contract-4130fcc685.sol
 
 
-pragma solidity ^0.8.4;
-
-
+//Total supply: 20 billion 
+//SFUND snapshots and partnerdrops: 3 billion tokens — %15
+//Liquidity: 500m tokens — %2.5 
+//Staking and Farming incentives: 8 billion — %40 
+//Operations treasury: 4 billion — %20 
+//NFT treasury: 3 billion — %15 
+//Team incentives: 1.5 billion — %7.5 
 
 contract SeedifyNFTSpace is ERC20, ERC20Burnable {
-    constructor() ERC20("SeedifyNFTSpace", "SNFTS") {
-        _mint(msg.sender, 10000000000 * 10 ** decimals());
-    } 
+    constructor(address sfundSnapshot, address liquidity, address stakeFarm, address operationTreasury, address nftTreasury, address teamIncentives) ERC20("SeedifyNFTSpace", "SNFTS") {
+        
+        _mint(sfundSnapshot, ((20000000000*15)/100) * 10 ** decimals());
+        _mint(liquidity, ((20000000000*2.5)/100) * 10 ** decimals());
+        _mint(stakeFarm, ((20000000000*40)/100) * 10 ** decimals());
+        _mint(operationTreasury, ((20000000000*20)/100) * 10 ** decimals());
+        _mint(nftTreasury, ((20000000000*15)/100) * 10 ** decimals());
+        _mint(teamIncentives, ((20000000000*7.5)/100) * 10 ** decimals());
+    }
 }
